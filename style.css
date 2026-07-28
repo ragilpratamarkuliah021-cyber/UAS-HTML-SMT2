@@ -1,0 +1,361 @@
+/* =========================
+   RESET DASAR
+========================= */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #e9f2fc;
+  font-family: Tahoma, Arial, sans-serif;
+  color: #0a2540;
+}
+
+/* =========================
+   HEADER
+========================= */
+.header {
+  width: 100%;
+  background-color: #0a2540;
+  padding: 10px;
+  text-align: center;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 32px;
+  font-style: italic;
+  color: white;
+}
+
+.header .my {
+  color: #d9d9ff;
+}
+
+.header .boost {
+  color: #c4b4ff;
+}
+
+.header .ride {
+  color: #74d4ff;
+}
+
+.header .instantly {
+  color: #46ecd5;
+}
+
+/* GARIS GRADIENT DI HEADER */
+.gradient-line {
+  display: flex;
+  width: 100%;
+  height: 5px;
+  margin-top: 1px;
+}
+
+.gradient-line span {
+  flex: 1;
+}
+
+.gradient-line span:nth-child(1) {background-color: #c4b4ff;}
+.gradient-line span:nth-child(2) {background-color: #a3b3ff;}
+.gradient-line span:nth-child(3) {background-color: #8ec5ff;}
+.gradient-line span:nth-child(4) {background-color: #74d4ff;}
+.gradient-line span:nth-child(5) {background-color: #53eafd;}
+.gradient-line span:nth-child(6) {background-color: #46ecd5;}
+.gradient-line span:nth-child(7) {background-color: #5ee9b5;}
+.gradient-line span:nth-child(8) {background-color: #7bf1a8;}
+.gradient-line span:nth-child(9) {background-color: #bbf451;}
+
+/* =========================
+   PROMO / MARQUEE
+========================= */
+.promo {
+  background-color: #34495e;
+  color: white;
+  padding: 5px;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+/* =========================
+   MENU NAVIGASI
+========================= */
+.navbar {
+  width: 100%;
+  background-color: #0a2540;
+  padding: 10px;
+  text-align: center;
+}
+
+.nav-menu {
+  width: 60%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.nav-menu a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px 25px;
+  display: block;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.nav-menu a:hover {
+  background-color: #46ecd5;
+  color: #0a2540;
+}
+
+/* =========================
+   GARIS PEMISAH
+========================= */
+.separator {
+  border: none;
+  height: 3px;
+  background-color: #0a2540;
+  margin: 0;
+}
+
+/* =========================
+   LAYOUT UTAMA
+========================= */
+.layout {
+  width: 100%;
+  display: flex;
+  padding: 10px;
+  gap: 10px;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+.sidebar {
+  width: 20%;
+  background-color: #e9f2fc;
+  padding: 15px;
+}
+
+.sidebar h3 {
+  text-align: center;
+  color: #0a2540;
+  margin-top: 5px;
+}
+
+.sidebar hr {
+  border: none;
+  border-top: 1px solid #b8c8d9;
+}
+
+.sidebar .title-line {
+  border-top: 3px solid #0a2540;
+}
+
+.sidebar a {
+  color: #0a2540;
+  text-decoration: none;
+  display: block;
+  padding: 8px;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.sidebar a:hover {
+  background-color: #46ecd5;
+  color: #0a2540;
+}
+
+/* =========================
+   KONTEN TENGAH
+========================= */
+.content {
+  width: 60%;
+  background-color: white;
+  padding: 0;
+}
+
+.content iframe {
+  width: 100%;
+  height: 1100px;
+  border: none;
+  display: block;
+}
+
+/* =========================
+   SIDEBAR KANAN
+========================= */
+.right-sidebar {
+  width: 20%;
+  background-color: #e9f2fc;
+  padding: 15px;
+}
+
+.right-sidebar h3 {
+  text-align: center;
+  color: #0a2540;
+}
+
+.right-sidebar hr {
+  border: none;
+  border-top: 1px solid #b8c8d9;
+}
+
+.right-sidebar .title-line {
+  border-top: 3px solid #0a2540;
+}
+
+.review {
+  background-color: white;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.stars {
+  color: #f5b400;
+  font-size: 18px;
+}
+/* =========================
+   STYLE FORM PEMESANAN
+========================= */
+.form-container {
+  background-color: white;
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-header {
+  background-color: #0a2540;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  border-radius: 8px 8px 0 0;
+  margin: -30px -30px 30px -30px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #0a2540;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="number"],
+.form-group input[type="date"],
+.form-group select,
+.form-group textarea {
+  padding: 10px;
+  border: 1px solid #b8c8d9;
+  border-radius: 5px;
+  font-family: Tahoma, Arial, sans-serif;
+  font-size: 14px;
+}
+
+.radio-group, .checkbox-group {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.btn-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.btn-submit, .btn-reset {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-submit {
+  background-color: #0a2540;
+  color: white;
+}
+
+.btn-submit:hover {
+  background-color: #46ecd5;
+  color: #0a2540;
+}
+
+.btn-reset {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.btn-reset:hover {
+  background-color: #c0392b;
+}
+
+#total-harga {
+  font-size: 20px;
+  font-weight: bold;
+  color: #27ae60;
+  background: #e9f2fc;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+
+/* =========================
+   SOSIAL MEDIA
+========================= */
+.social-media a {
+  display: block;
+  padding: 8px;
+  color: #0a2540;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.social-media a:hover {
+  background-color: #46ecd5;
+  color: #0a2540;
+}
+
+/* =========================
+   FOOTER
+========================= */
+.footer {
+  width: 100%;
+  background-color: #0a2540;
+  color: white;
+  text-align: center;
+  padding: 80px;
+
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  height: 60px; 
+}
+
+.footer h3 {
+  margin: 0;
+}
+
+.footer .my {
+  color: #d9d9ff;
+}
+

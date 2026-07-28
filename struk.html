@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Struk Pembelian - MyTrinity Store</title>
+    <style>
+        body {
+            background-color: #e9f2fc;
+            font-family: 'Courier New', Courier, monospace; /* Font ala mesin kasir */
+            color: #000;
+        }
+
+        .struk-container {
+            width: 350px;
+            background: #fff;
+            margin: 40px auto;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            border: 1px solid #ccc;
+        }
+
+        .header, .footer {
+            text-align: center;
+        }
+
+        .header h2 {
+            margin: 0;
+            font-size: 22px;
+        }
+
+        .header p {
+            margin: 5px 0;
+            font-size: 12px;
+            color: #555;
+        }
+
+        .garis {
+            border-top: 1px dashed #000;
+            margin: 15px 0;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .item-row {
+            margin-top: 10px;
+        }
+
+        .item-name {
+            font-weight: bold;
+            font-size: 14px;
+            display: block;
+        }
+
+        .item-calc {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+        }
+
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .btn-print {
+            display: block;
+            width: 350px;
+            margin: 20px auto;
+            padding: 12px;
+            background-color: #0a2540;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-print:hover {
+            background-color: #46ecd5;
+            color: #0a2540;
+        }
+
+        /* CSS KHUSUS SAAT MODE PRINT */
+        @media print {
+            body {
+                background-color: white;
+                margin: 0;
+            }
+            .struk-container {
+                box-shadow: none;
+                border: none;
+                margin: 0;
+                width: 100%;
+                max-width: 350px;
+            }
+            .no-print {
+                display: none; /* Sembunyikan tombol saat mencetak */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="struk-container">
+        <div class="header">
+            <h2>MYTRINITY STORE</h2>
+            <p>Jl. Raya Sepeda No. 10, Bandung</p>
+            <p>Telp: 0812-1234-5678</p>
+        </div>
+
+        <div class="garis"></div>
+
+        <div class="info-row">
+            <span>Tanggal:</span>
+            <span id="tglPesanan"></span>
+        </div>
+        <div class="info-row">
+            <span>Kasir:</span>
+            <span>Web System</span>
+        </div>
+        <div class="info-row">
+            <span>Pelanggan:</span>
+            <span id="namaPelanggan"></span>
+        </div>
+        <div class="info-row">
+            <span>No. HP:</span>
+            <span id="hpPelanggan"></span>
+        </div>
+
+        <div class="garis"></div>
+
+        <div class="item-row">
+            <span class="item-name" id="namaProduk">Nama Produk</span>
+            <div class="item-calc">
+                <span id="qtyHarga">1 x Rp 0</span>
+                <span id="subTotal">Rp 0</span>
+            </div>
+        </div>
+
+        <div class="garis"></div>
+
+        <div class="info-row">
+            <span>Metode Bayar:</span>
+            <span id="metodeBayar"></span>
+        </div>
+        
+        <div class="total-row">
+            <span>TOTAL:</span>
+            <span id="totalAkhir">Rp 0</span>
+        </div>
+
+        <div class="garis"></div>
+
+        <div class="footer">
+            <p>Terima kasih atas pesanan Anda!</p>
+            <p>Barang yang sudah dibeli tidak dapat ditukar/dikembalikan.</p>
+        </div>
+    </div>
+
+    <!-- Tombol ini akan otomatis hilang saat kertas dicetak karena class "no-print" -->
+    <button class="btn-print no-print" onclick="window.print()">🖨️ Cetak Struk</button>
+
+    <script>
+        // Mengambil data pesanan dari LocalStorage
+        const dataStr = localStorage.getItem('strukPesanan');
+        
+        if (dataStr) {
+            const data = JSON.parse(dataStr);
+            
+            // Memasukkan data ke dalam elemen HTML
+            document.getElementById('tglPesanan').innerText = data.tanggalPesanan;
+            document.getElementById('namaPelanggan').innerText = data.namaPemesan;
+            document.getElementById('hpPelanggan').innerText = data.hp;
+            document.getElementById('namaProduk').innerText = data.produk;
+            document.getElementById('metodeBayar').innerText = data.metodePembayaran;
+            
+            // Format format uang
+            const formatUang = (angka) => "Rp " + angka.toLocaleString('id-ID');
+            
+            document.getElementById('qtyHarga').innerText = `${data.jumlah} x ${formatUang(data.hargaSatuan)}`;
+            document.getElementById('subTotal').innerText = formatUang(data.totalHarga);
+            document.getElementById('totalAkhir').innerText = formatUang(data.totalHarga);
+        } else {
+            alert("Data pesanan tidak ditemukan!");
+        }
+    </script>
+</body>
+</html>

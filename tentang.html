@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Kami</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #E9F2FC;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            /* Menyembunyikan scrollbar bawaan */
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Container pembungkus utama bergaya putih elegan */
+        .main-container {
+            background-color: #ffffff;
+            max-width: 950px;
+            margin: 0 auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            overflow: hidden;
+            line-height: 1.7; /* Memberi ruang baca yang nyaman antar baris */
+        }
+
+        .header-title {
+            text-align: center;
+            background-color: #0A2540;
+            color: #ffffff;
+            padding: 20px;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .header-title .my {
+            color: #D9D9FF;
+            font-style: italic;
+        }
+
+        .content-wrapper {
+            padding: 40px;
+        }
+
+        /* Gaya penulisan judul setiap bagian */
+        .section-title {
+            color: #0A2540;
+            font-size: 1.3rem;
+            font-weight: 600;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        /* Menggunakan Flexbox untuk membagi area Visi & Misi secara dinamis */
+        .visi-misi-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 35px;
+            margin-bottom: 35px;
+        }
+
+        /* Desain Card untuk Visi dan Misi */
+        .card {
+            flex: 1; /* Membuat ukurannya seimbang */
+            min-width: 280px;
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        .card h3 {
+            color: #0A2540;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .card ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .card ul li {
+            margin-bottom: 8px;
+        }
+
+        /* Menggunakan CSS Grid untuk merapikan Informasi Toko agar titik dua sejajar */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 150px 15px 1fr;
+            gap: 10px 0;
+            max-width: 550px;
+            margin: 0 auto;
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: #0A2540;
+        }
+
+        .tagline {
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #0A2540;
+            margin-top: 40px;
+            font-style: italic;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        <!-- Header Judul -->
+        <h2 class="header-title">Tentang <span class="my">MY</span><i>TRINITY STORE</i></h2>
+        
+        <div class="content-wrapper">
+            <!-- Bagian Profil Toko -->
+            <div class="profile-section">
+                <h2 class="section-title">Profil Toko</h2>
+                <p>MyTrinity Store adalah toko yang bergerak di bidang penjualan berbagai jenis sepeda berkualitas untuk kebutuhan olahraga, rekreasi, maupun transportasi sehari-hari. Kami menyediakan berbagai pilihan sepeda dari merek ternama seperti Polygon, United, Pacific, Thrill, dan Wimcycle dengan harga yang kompetitif dan kualitas terbaik.</p>
+                <p>Sejak berdiri, MyTrinity Store berkomitmen untuk memberikan pelayanan terbaik kepada pelanggan dengan menyediakan produk yang original, berkualitas, serta didukung oleh layanan konsultasi yang ramah dan profesional.</p>
+                <p>Kami percaya bahwa bersepeda bukan hanya sekadar olahraga, tetapi juga gaya hidup yang sehat dan ramah lingkungan. Oleh karena itu, kami terus menghadirkan produk-produk terbaik untuk mendukung aktivitas bersepeda masyarakat Indonesia.</p>
+            </div>
+
+            <!-- Bagian Visi & Misi dengan tampilan Card / Flexbox -->
+            <div class="visi-misi-container">
+                <div class="card">
+                    <h3>VISI</h3>
+                    <p>Menjadi toko sepeda terpercaya yang menyediakan produk berkualitas dan pelayanan terbaik bagi pelanggan di seluruh Indonesia.</p>
+                </div>
+                <div class="card">
+                    <h3>MISI</h3>
+                    <ul>
+                        <li>Menyediakan berbagai pilihan sepeda berkualitas.</li>
+                        <li>Memberikan pelayanan yang cepat dan ramah.</li>
+                        <li>Menawarkan harga yang kompetitif.</li>
+                        <li>Meningkatkan kepuasan pelanggan.</li>
+                        <li>Mendukung gaya hidup sehat melalui olahraga bersepeda.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bagian Informasi Toko dengan CSS Grid -->
+            <div class="info-section">
+                <h2 class="section-title">Informasi Toko</h2>
+                <div class="info-grid">
+                    <div class="info-label">Nama Toko</div>
+                    <div>:</div>
+                    <div>MyTrinity Store</div>
+
+                    <div class="info-label">Bidang Usaha</div>
+                    <div>:</div>
+                    <div>Penjualan Sepeda dan Aksesoris</div>
+
+                    <div class="info-label">Alamat</div>
+                    <div>:</div>
+                    <div>Jl. Raya Sepeda No. 10, Bandung</div>
+
+                    <div class="info-label">Telepon</div>
+                    <div>:</div>
+                    <div>0812-1234-5678</div>
+
+                    <div class="info-label">Email</div>
+                    <div>:</div>
+                    <div>info@mytrinitystore.com</div>
+
+                    <div class="info-label">Jam Operasional</div>
+                    <div>:</div>
+                    <div>08.00 - 17.00 WIB</div>
+                </div>
+            </div>
+
+            <!-- Tagline Bawah -->
+            <div class="tagline">"BOOST YOUR RIDE INSTANTLY"</div>
+        </div>
+    </div>
+
+</body>
+</html>

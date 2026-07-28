@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Pemesanan - MyTrinity Store</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <div class="form-container">
+        <div class="form-header">
+            <h2 style="margin: 0;">FORM PEMESANAN SEPEDA</h2>
+        </div>
+
+        <form id="formPemesanan" action="done.html" method="POST" onsubmit="return prosesPemesanan(event)">
+            
+            <div class="form-group">
+                <label>Nama Lengkap</label>
+                <input type="text" name="nama" id="nama" placeholder="Masukkan nama lengkap Anda" required />
+            </div>
+
+            <div class="form-group">
+                <label>Jenis Kelamin</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="jk" value="Laki-laki" required/> Laki-laki</label>
+                    <label><input type="radio" name="jk" value="Perempuan" required/> Perempuan</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Kontak (Email & No. HP)</label>
+                <input type="email" name="email" id="email" placeholder="Email aktif" style="margin-bottom: 10px;" required />
+                <input type="text" name="hp" id="hp" placeholder="Nomor WhatsApp/HP" required />
+            </div>
+
+            <div class="form-group">
+                <label>Alamat Lengkap</label>
+                <textarea rows="3" name="alamat" id="alamat" placeholder="Masukkan alamat pengiriman" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Produk Sepeda</label>
+                <select name="produk" id="produk" onchange="kalkulasiHarga()" required>
+                    <option value="">-- Pilih Produk --</option>
+                    <option value="5500000">Polygon Cascade 3 - Rp 5.500.000</option>
+                    <option value="6200000">United Clovis 5 - Rp 6.200.000</option>
+                    <option value="4800000">Pacific Noris 3.0 - Rp 4.800.000</option>
+                    <option value="7100000">Thrill Vanquish 3.0 - Rp 7.100.000</option>
+                    <option value="3900000">Wimcycle MTB XT - Rp 3.900.000</option>
+                    <option value="8500000">Polygon Premier 5 - Rp 8.500.000</option>
+                    <option value="100500000">Cayon - Rp 100.500.000</option>
+                    <option value="3100000">Roadbike Pasific - Rp 3.100.000</option>
+                    <option value="4500000">Roadbike Genio - Rp 4.500.000</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Jumlah Pesanan</label>
+                <input type="number" min="1" value="1" name="jumlah" id="jumlah" oninput="kalkulasiHarga()" required />
+            </div>
+
+            <div class="form-group">
+                <label>Total Harga</label>
+                <div id="total-harga">Rp 0</div>
+            </div>
+
+            <div class="form-group">
+                <label>Ukuran Frame</label>
+                <select name="frame" required>
+                    <option value="">Pilih Ukuran</option>
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Metode Pembayaran</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="bayar" value="Transfer Bank" required/> Transfer Bank</label>
+                    <label><input type="radio" name="bayar" value="E-Wallet" required/> E-Wallet</label>
+                    <label><input type="radio" name="bayar" value="COD" required/> COD</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Aksesoris Tambahan</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="aksesoris[]" value="Helm" /> Helm</label>
+                    <label><input type="checkbox" name="aksesoris[]" value="Lampu Sepeda" /> Lampu Sepeda</label>
+                    <label><input type="checkbox" name="aksesoris[]" value="Botol Minum" /> Botol Minum</label>
+                    <label><input type="checkbox" name="aksesoris[]" value="Kunci Sepeda" /> Kunci Sepeda</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Tanggal Pengiriman & Catatan</label>
+                <input type="date" name="tanggal" required style="margin-bottom: 10px;" />
+                <textarea rows="3" name="catatan" placeholder="Catatan khusus untuk penjual (opsional)"></textarea>
+            </div>
+
+            <div class="btn-group">
+                <button type="submit" class="btn-submit">Pesan Sekarang</button>
+                <button type="reset" class="btn-reset" onclick="resetHarga()">Reset</button>
+            </div>
+
+        </form>
+    </div>
+
+    <!-- SCRIPT JAVASCRIPT -->
+    <script>
+    function kalkulasiHarga() {
+        const produkPilihan = document.getElementById('produk');
+        const jumlahPesanan = document.getElementById('jumlah').value;
+        const tampilkanTotal = document.getElementById('total-harga');
+
+        if (produkPilihan.value) {
+            const harga = parseFloat(produkPilihan.value);
+            const jumlah = parseInt(jumlahPesanan) || 0;
+            const total = harga * jumlah;
+            tampilkanTotal.innerText = "Rp " + total.toLocaleString('id-ID');
+        } else {
+            tampilkanTotal.innerText = "Rp 0";
+        }
+    }
+
+    function resetHarga() {
+        document.getElementById('total-harga').innerText = "Rp 0";
+    }
+
+    function prosesPemesanan(event) {
+        event.preventDefault(); // Mencegah form langsung submit/pindah halaman default
+
+        const nama = document.getElementById('nama').value;
+        const produkEl = document.getElementById('produk');
+        
+        if (produkEl.value === "") {
+            alert("Silakan pilih produk sepeda terlebih dahulu!");
+            return false;
+        }
+
+        // Mengambil teks nama produk (bukan valuenya yang berupa angka)
+        const namaProduk = produkEl.options[produkEl.selectedIndex].text;
+        const harga = parseFloat(produkEl.value);
+        const jumlah = document.getElementById('jumlah').value;
+        
+        // Mengambil nilai radio button metode pembayaran yang dipilih
+        const metodeBayar = document.querySelector('input[name="bayar"]:checked').value;
+
+        // Menyimpan data ke dalam LocalStorage
+        const dataPesanan = {
+            namaPemesan: nama,
+            hp: document.getElementById('hp').value,
+            produk: namaProduk.split(' - ')[0], // Mengambil nama sepedanya saja
+            hargaSatuan: harga,
+            jumlah: jumlah,
+            totalHarga: harga * jumlah,
+            metodePembayaran: metodeBayar,
+            tanggalPesanan: new Date().toLocaleDateString('id-ID') // Tanggal hari ini
+        };
+
+        localStorage.setItem('strukPesanan', JSON.stringify(dataPesanan));
+
+        // Pindah ke halaman struk
+        window.location.href = 'struk.html';
+    }
+</script>
+</body>
+</html>
